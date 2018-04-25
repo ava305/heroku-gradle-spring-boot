@@ -1,0 +1,68 @@
+plugins {
+    id 'org.springframework.boot' version '2.0.1.RELEASE'
+}
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version "1.0"
+//group "misc"
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+jar {
+    enabled = true
+}
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf:2.0.1.RELEASE") {
+        exclude group:'nz.net.ultraq.thymeleaf',module:'thymeleaf-layout-dialect'
+    }
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.1.0'
+    
+    compile 'org.webjars:jquery:3.3.1'
+    compile 'org.webjars:jquery-ui:1.12.1'
+    compile 'org.webjars:bootstrap:4.0.0'
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+
+    compile "org.postgresql:postgresql:42.2.0"
+    testCompile 'junit:junit:4.12'
+}
+
+springBoot {
+
+    mainClassName = 'com.example.Main'
+}
+
+jar {
+
+    enabled = true
+    baseName = 'java-getting-started'
+    version =  '1.0'
+
+}
+bootJar {
+    classifier = 'boot'
+}
+//bootRun {
+//    main = 'com.example.Main'
+//}
+repositories {
+//    maven {
+//        url 'http://maven.aliyun.com/nexus/content/groups/public'
+//    }
+    jcenter()
+
+//    maven { url "https://repo.grails.org/grails/core" }
+//
+//    maven { url 'http://repo.spring.io/libs-release' }
+}

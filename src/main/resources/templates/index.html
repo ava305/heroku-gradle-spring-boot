@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<!--
+<html
+xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<title>test</title>
+<meta charset="utf-8" th:accept-charset="utf-8">
+<body>
+
+<div class="jumbotron text-center">
+    我只是在测试啊
+
+    <br>欢迎您,
+    :<span th:text="${user.name}">jx</span>
+
+</div>
+</body>
+</html>
